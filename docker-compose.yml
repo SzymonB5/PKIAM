@@ -25,6 +25,7 @@ services:
       PGDATA: /data/postgres
     volumes:
       - postgres:/data/postgres
+      - .\DatabaseController\init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
     networks:
@@ -52,7 +53,14 @@ services:
       - "5000:5000"
     networks:
       - my-network
-  
+  #rabbitmq:
+   # image: rabbitmq:3.9.11-management-alpine
+    #container_name: rabbitmq
+    #ports:
+     # - "5672:5672"
+      #- "15672:15672"
+    #networks:
+      #- my-network
 
 networks:
   my-network:
